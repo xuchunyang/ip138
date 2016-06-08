@@ -81,11 +81,16 @@ while :; do
     shift
 done
 
-if ! valid_ip $1; then
-    printf "Error: Bad IP \"%s\"\n\n" $1
+if [ -n "$ip" ]; then
+    if ! valid_ip $1; then
+        printf "Error: Bad IP \"%s\"\n\n" $1
+        show_help
+        exit 1
+    fi
+    curl "http://test.ip138.com/query/?ip=${ip}&datatype=${format}"
+    test -t 1 && printf "\n"
+else
+    printf "Error: Empty IP\n\n"
     show_help
     exit 1
 fi
-
-curl "http://test.ip138.com/query/?ip=${ip}&datatype=${format}"
-test -t 1 && printf "\n"
