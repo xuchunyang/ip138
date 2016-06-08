@@ -81,9 +81,14 @@ while :; do
     shift
 done
 
+# Read from stdin
+if ! [ -t 0 ]; then
+    read ip
+fi
+
 if [ -n "$ip" ]; then
-    if ! valid_ip $1; then
-        printf "Error: Bad IP \"%s\"\n\n" $1
+    if ! valid_ip $ip; then
+        printf "Error: Bad IP \"%s\"\n\n" $ip
         show_help
         exit 1
     fi
