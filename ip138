@@ -47,12 +47,6 @@ valid_ip () {
     return $stat
 }
 
-# if ! valid_ip $1; then
-#     printf "Error: Bad IP \"%s\"\n\n" $1
-#     show_help
-#     exit 1
-# fi
-
 ip=
 format=text
 
@@ -86,6 +80,12 @@ while :; do
 
     shift
 done
+
+if ! valid_ip $1; then
+    printf "Error: Bad IP \"%s\"\n\n" $1
+    show_help
+    exit 1
+fi
 
 curl "http://test.ip138.com/query/?ip=${ip}&datatype=${format}"
 test -t 1 && printf "\n"
