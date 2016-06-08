@@ -2,7 +2,7 @@
 #
 # IP 地理位置查询
 #
-# Usage: ip138 --format=(json|sexp|text) ip
+# Usage: ip138 --format=(jsonp|xml|text) ip
 #
 # Require: curl(1)
 #
@@ -17,7 +17,7 @@ Usage:
     ip138 [--format=jsonp|xml|text] ip
 
 Option:
-    --format=json|xml|text    The format of output (defaults to text)
+    --format=jsonp|xml|text    The format of output (defaults to text)
 
 EOF
 }
@@ -95,7 +95,7 @@ if [ -n "$ip" ]; then
     curl --silent "http://test.ip138.com/query/?ip=${ip}&datatype=${format}"
     test -t 1 && printf "\n"
 else
-    printf "Error: Empty IP\n\n"
+    # printf "Error: Empty IP\n\n"
     show_help
     exit 1
 fi
