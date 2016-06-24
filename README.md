@@ -1,5 +1,7 @@
 # `ip138`
 
+_注：由于 ip138 不再提供免费 [API](http://user.ip138.com/ip/)，所以此工具已经失效。_
+
 ## Demo
 
 ```bash
